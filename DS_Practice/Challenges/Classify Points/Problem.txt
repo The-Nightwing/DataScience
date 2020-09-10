@@ -1,0 +1,19 @@
+Challenge - Classify Points
+Classify Points
+you are provided with two features and you have to classify it in class 1 or 0.
+
+
+
+Data Description
+Two files are provided to you train and test.
+
+Train: It consist of two files Xtrain containing the features and Ytrain containing labels associated with them.
+Test: It also consists of two files Xtest which contains the features on which your model will be tested and sample output which defines the format in which your output needs to be submitted.
+#Please draw the graph for the given data before training the model.
+Before submitting please check the list below:
+
+The column names or headers of submission file must match with that given in sample submission file.
+
+Datatype of the columns of submission file must match with that of the given sample_submission file.
+
+The number of rows must be equal to given test cases and number of columns must be equal to the columns given in the sample submission file.

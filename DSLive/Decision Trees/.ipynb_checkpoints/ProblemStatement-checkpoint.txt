@@ -1,0 +1,4 @@
+In this problem, we have to make a decision tree to predict whether a person is going to survive or not.
+
+We can make the decision tree using any feature we think will be useful in prediction the survival we want.
+it's upto which features we use to train the model and which don't.

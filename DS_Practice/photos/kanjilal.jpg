@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:article="http://ogp.me/ns/article#"
+  xmlns:book="http://ogp.me/ns/book#"
+  xmlns:profile="http://ogp.me/ns/profile#"
+  xmlns:video="http://ogp.me/ns/video#"
+  xmlns:product="http://ogp.me/ns/product#"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="" />
+<meta name="description" content="$(document).ready(function(){ Array.prototype.diff = function(a) {  return this.filter(function(i) {return a.indexOf(i) &lt; 0;}); }; $.showAllFaculty = function(){ $(&quot;div.facultycard&quot;).css(&quot;display&quot;,&quot;&quot;); $(&quot;div.facultycard&quot;).filter(&quot;[type=&#039;visiting&#039;]&quot;).css(&quot;display&quot;,&quot;none&quot;); $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;all&#039;]&quot;).addClass(&quot;select-item-active&quot;); $(&quot;div.select-item&quot;).not(&quot;[dept=&#039;all&#039;]&quot;).removeClass(&quot;select-item-active&quot;); } /* 1 - CSE 2 - ECE 3 - CB 4 - AM 5 - SS 6 - DES 7 - OTHERS 12 - CSE and ECE 13 - CSE and CB 14 - CSE and AM 15 - CSE and SS 23 - ECE and CB 24 - ECE and AM 25 - ECE and SS 34 - CB and AM 35 - CB and SS 123 - CSE, ECE, CB 124 - CSE, ECE, AM 125 - CSE, ECE, SS 134 - CSE, CB, AM 135 - CSE, CB, SS 234 - ECE, CB, AM 235 - ECE, CB, SS 2345 - ECE, CB, AM, SS 1234 - CSE, ECE, CB, AM 12345 - All branches 56 - SS, DES 57 - SS, OTHERS */ all_list= [&#039;0&#039;,&#039;1&#039;,&#039;2&#039;,&#039;3&#039;,&#039;4&#039;,&#039;5&#039;,&#039;6&#039;,&#039;7&#039;,&#039;12&#039;,&#039;13&#039;,&#039;14&#039;,&#039;15&#039;,&#039;16&#039;,&#039;23&#039;,&#039;24&#039;,&#039;25&#039;,&#039;26&#039;,&#039;34&#039;,&#039;35&#039;,&#039;123&#039;,&#039;126&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;,&#039;56&#039;,&#039;57&#039;]; $.filterFaculty = function(course){ $(&quot;div.select-item&quot;).filter(&quot;[dept=course]&quot;).addClass(&quot;select-item-active&quot;); $(&quot;div.select-item&quot;).not(&quot;[dept=course]&quot;).removeClass(&quot;select-item-active&quot;); if(course==&#039;CSE&#039;){  filter_course = [&#039;1&#039;,&#039;12&#039;,&#039;13&#039;,&#039;14&#039;,&#039;15&#039;,&#039;16&#039;,&#039;123&#039;,&#039;126&#039;,&#039;134&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course==&#039;ECE&#039;){  filter_course = [&#039;2&#039;,&#039;12&#039;,&#039;23&#039;,&#039;24&#039;,&#039;25&#039;,&#039;26&#039;,&#039;123&#039;,&#039;126&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course == &#039;CB&#039;){  filter_course = [&#039;3&#039;,&#039;13&#039;,&#039;23&#039;,&#039;34&#039;,&#039;35&#039;,&#039;123&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course == &#039;AM&#039;){  filter_course = [&#039;4&#039;,&#039;14&#039;,&#039;24&#039;,&#039;34&#039;,&#039;124&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;] } else if(course == &#039;SS&#039;){  filter_course = [&#039;5&#039;,&#039;15&#039;,&#039;25&#039;,&#039;35&#039;,&#039;125&#039;,&#039;135&#039;,&#039;235&#039;,&#039;2345&#039;,&#039;12345&#039;,&#039;56&#039;,&#039;57&#039;] } else if(course == &#039;DES&#039;){  filter_course = [&#039;6&#039;,&#039;16&#039;,&#039;26&#039;,&#039;126&#039;,&#039;56&#039;] } else if(course == &#039;OTHERS&#039;){  filter_course = [&#039;7&#039;,&#039;57&#039;] } for (var i = filter_course.length - 1; i &gt;= 0; i--) {  $(&quot;div.facultycard&quot;).filter(&quot;[dept=&#039;&quot; + filter_course[i] + &quot;&#039;]&quot;).css(&quot;display&quot;,&quot;&quot;);  $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;&quot; + filter_course[i] + &quot;&#039;]&quot;).addClass(&quot;select-item-active&quot;);  }; var sub_list = all_list.diff(filter_course); for(var i = sub_list.length - 1; i&gt;=0; i--){ $(&quot;div.facultycard&quot;).filter(&quot;[dept=&#039;&quot; + sub_list[i] + &quot;&#039;]&quot;).css(&quot;display&quot;,&quot;none&quot;); $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;&quot; + sub_list[i] + &quot;&#039;]&quot;).removeClass(&quot;select-item-active&quot;); } }; $.showAllFaculty(); }); .select { display:block; text-align:center; } .select-item { display:inline-block; color:#fff; background-color:#3fada8; border-radius:2px; border:1px solid #3fada8; cursor:pointer; padding:4px 10px; margin:5px; transition:0.4s; } .select-item:hover,.select-item.select-item-active { background-color:#fff; color:#3fada8; } #cards-container { display:block; text-align:center; padding:10px; } #cards-container .card { width:350px; height:255px; vertical-align:top; border-radius:4px; border:1px solid #ddd; background:#fafafa; padding:20px; display:inline-block; margin:10px; overflow:hidden; } #cards-container .card img { /*height:130px!important; width:110px!important;*/ width:auto; padding:3px!important; background:#fff; margin:0!important; margin-right:20px!important; margin-bottom:20px!important; } #cards-container .card hr { margin:0; margin-top:20px; margin-bottom:10px; background:-webkit-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-moz-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-ms-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-o-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); clear:both; } @media screen and (max-width:500px) { #cards-container .card { width:80%; } } The Institute is organized as research groups and education programs, and has not maintained strong department boundaries. However, faculty can be broadly grouped according to their disciplines which are given below. Apart from those listed below, the institute also has a number of Guest, Adjunct and Visiting faculty members in various disciplines. They can be found on this page. Click below to display faculty members from a specific discipline. All Computational Biology CSE ECE Human-Centered Design Mathematics Social Sciences and Humanities Others     Visiting Faculty" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="https://www.iiitd.ac.in/people/faculty" />
+<link rel="shortlink" href="https://www.iiitd.ac.in/node/23" />
+<meta property="og:site_name" content="IIIT-Delhi" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.iiitd.ac.in/people/faculty" />
+<meta property="og:title" content="Faculty" />
+<meta property="og:description" content="$(document).ready(function(){ Array.prototype.diff = function(a) {  return this.filter(function(i) {return a.indexOf(i) &lt; 0;}); }; $.showAllFaculty = function(){ $(&quot;div.facultycard&quot;).css(&quot;display&quot;,&quot;&quot;); $(&quot;div.facultycard&quot;).filter(&quot;[type=&#039;visiting&#039;]&quot;).css(&quot;display&quot;,&quot;none&quot;); $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;all&#039;]&quot;).addClass(&quot;select-item-active&quot;); $(&quot;div.select-item&quot;).not(&quot;[dept=&#039;all&#039;]&quot;).removeClass(&quot;select-item-active&quot;); } /* 1 - CSE 2 - ECE 3 - CB 4 - AM 5 - SS 6 - DES 7 - OTHERS 12 - CSE and ECE 13 - CSE and CB 14 - CSE and AM 15 - CSE and SS 23 - ECE and CB 24 - ECE and AM 25 - ECE and SS 34 - CB and AM 35 - CB and SS 123 - CSE, ECE, CB 124 - CSE, ECE, AM 125 - CSE, ECE, SS 134 - CSE, CB, AM 135 - CSE, CB, SS 234 - ECE, CB, AM 235 - ECE, CB, SS 2345 - ECE, CB, AM, SS 1234 - CSE, ECE, CB, AM 12345 - All branches 56 - SS, DES 57 - SS, OTHERS */ all_list= [&#039;0&#039;,&#039;1&#039;,&#039;2&#039;,&#039;3&#039;,&#039;4&#039;,&#039;5&#039;,&#039;6&#039;,&#039;7&#039;,&#039;12&#039;,&#039;13&#039;,&#039;14&#039;,&#039;15&#039;,&#039;16&#039;,&#039;23&#039;,&#039;24&#039;,&#039;25&#039;,&#039;26&#039;,&#039;34&#039;,&#039;35&#039;,&#039;123&#039;,&#039;126&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;,&#039;56&#039;,&#039;57&#039;]; $.filterFaculty = function(course){ $(&quot;div.select-item&quot;).filter(&quot;[dept=course]&quot;).addClass(&quot;select-item-active&quot;); $(&quot;div.select-item&quot;).not(&quot;[dept=course]&quot;).removeClass(&quot;select-item-active&quot;); if(course==&#039;CSE&#039;){  filter_course = [&#039;1&#039;,&#039;12&#039;,&#039;13&#039;,&#039;14&#039;,&#039;15&#039;,&#039;16&#039;,&#039;123&#039;,&#039;126&#039;,&#039;134&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course==&#039;ECE&#039;){  filter_course = [&#039;2&#039;,&#039;12&#039;,&#039;23&#039;,&#039;24&#039;,&#039;25&#039;,&#039;26&#039;,&#039;123&#039;,&#039;126&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course == &#039;CB&#039;){  filter_course = [&#039;3&#039;,&#039;13&#039;,&#039;23&#039;,&#039;34&#039;,&#039;35&#039;,&#039;123&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course == &#039;AM&#039;){  filter_course = [&#039;4&#039;,&#039;14&#039;,&#039;24&#039;,&#039;34&#039;,&#039;124&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;] } else if(course == &#039;SS&#039;){  filter_course = [&#039;5&#039;,&#039;15&#039;,&#039;25&#039;,&#039;35&#039;,&#039;125&#039;,&#039;135&#039;,&#039;235&#039;,&#039;2345&#039;,&#039;12345&#039;,&#039;56&#039;,&#039;57&#039;] } else if(course == &#039;DES&#039;){  filter_course = [&#039;6&#039;,&#039;16&#039;,&#039;26&#039;,&#039;126&#039;,&#039;56&#039;] } else if(course == &#039;OTHERS&#039;){  filter_course = [&#039;7&#039;,&#039;57&#039;] } for (var i = filter_course.length - 1; i &gt;= 0; i--) {  $(&quot;div.facultycard&quot;).filter(&quot;[dept=&#039;&quot; + filter_course[i] + &quot;&#039;]&quot;).css(&quot;display&quot;,&quot;&quot;);  $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;&quot; + filter_course[i] + &quot;&#039;]&quot;).addClass(&quot;select-item-active&quot;);  }; var sub_list = all_list.diff(filter_course); for(var i = sub_list.length - 1; i&gt;=0; i--){ $(&quot;div.facultycard&quot;).filter(&quot;[dept=&#039;&quot; + sub_list[i] + &quot;&#039;]&quot;).css(&quot;display&quot;,&quot;none&quot;); $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;&quot; + sub_list[i] + &quot;&#039;]&quot;).removeClass(&quot;select-item-active&quot;); } }; $.showAllFaculty(); }); .select { display:block; text-align:center; } .select-item { display:inline-block; color:#fff; background-color:#3fada8; border-radius:2px; border:1px solid #3fada8; cursor:pointer; padding:4px 10px; margin:5px; transition:0.4s; } .select-item:hover,.select-item.select-item-active { background-color:#fff; color:#3fada8; } #cards-container { display:block; text-align:center; padding:10px; } #cards-container .card { width:350px; height:255px; vertical-align:top; border-radius:4px; border:1px solid #ddd; background:#fafafa; padding:20px; display:inline-block; margin:10px; overflow:hidden; } #cards-container .card img { /*height:130px!important; width:110px!important;*/ width:auto; padding:3px!important; background:#fff; margin:0!important; margin-right:20px!important; margin-bottom:20px!important; } #cards-container .card hr { margin:0; margin-top:20px; margin-bottom:10px; background:-webkit-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-moz-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-ms-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-o-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); clear:both; } @media screen and (max-width:500px) { #cards-container .card { width:80%; } } The Institute is organized as research groups and education programs, and has not maintained strong department boundaries. However, faculty can be broadly grouped according to their disciplines which are given below. Apart from those listed below, the institute also has a number of Guest, Adjunct and Visiting faculty members in various disciplines. They can be found on this page. Click below to display faculty members from a specific discipline. All Computational Biology CSE ECE Human-Centered Design Mathematics Social Sciences and Humanities Others     Visiting Faculty" />
+<meta property="og:updated_time" content="2018-12-24T15:09:50+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="https://www.iiitd.ac.in/people/faculty" />
+<meta name="twitter:title" content="Faculty" />
+<meta name="twitter:description" content="$(document).ready(function(){ Array.prototype.diff = function(a) {  return this.filter(function(i) {return a.indexOf(i) &lt; 0;}); }; $.showAllFaculty = function(){ $(&quot;div.facultycard&quot;).css(&quot;display&quot;,&quot;&quot;); $(&quot;div.facultycard&quot;).filter(&quot;[type=&#039;visiting&#039;]&quot;).css(&quot;display&quot;,&quot;none&quot;); $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;all&#039;]&quot;).addClass(&quot;select-item-active&quot;); $(&quot;div.select-item&quot;).not(&quot;[dept=&#039;all&#039;]&quot;).removeClass(&quot;select-item-active&quot;); } /* 1 - CSE 2 - ECE 3 - CB 4 - AM 5 - SS 6 - DES 7 - OTHERS 12 - CSE and ECE 13 - CSE and CB 14 - CSE and AM 15 - CSE and SS 23 - ECE and CB 24 - ECE and AM 25 - ECE and SS 34 - CB and AM 35 - CB and SS 123 - CSE, ECE, CB 124 - CSE, ECE, AM 125 - CSE, ECE, SS 134 - CSE, CB, AM 135 - CSE, CB, SS 234 - ECE, CB, AM 235 - ECE, CB, SS 2345 - ECE, CB, AM, SS 1234 - CSE, ECE, CB, AM 12345 - All branches 56 - SS, DES 57 - SS, OTHERS */ all_list= [&#039;0&#039;,&#039;1&#039;,&#039;2&#039;,&#039;3&#039;,&#039;4&#039;,&#039;5&#039;,&#039;6&#039;,&#039;7&#039;,&#039;12&#039;,&#039;13&#039;,&#039;14&#039;,&#039;15&#039;,&#039;16&#039;,&#039;23&#039;,&#039;24&#039;,&#039;25&#039;,&#039;26&#039;,&#039;34&#039;,&#039;35&#039;,&#039;123&#039;,&#039;126&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;,&#039;56&#039;,&#039;57&#039;]; $.filterFaculty = function(course){ $(&quot;div.select-item&quot;).filter(&quot;[dept=course]&quot;).addClass(&quot;select-item-active&quot;); $(&quot;div.select-item&quot;).not(&quot;[dept=course]&quot;).removeClass(&quot;select-item-active&quot;); if(course==&#039;CSE&#039;){  filter_course = [&#039;1&#039;,&#039;12&#039;,&#039;13&#039;,&#039;14&#039;,&#039;15&#039;,&#039;16&#039;,&#039;123&#039;,&#039;126&#039;,&#039;134&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course==&#039;ECE&#039;){  filter_course = [&#039;2&#039;,&#039;12&#039;,&#039;23&#039;,&#039;24&#039;,&#039;25&#039;,&#039;26&#039;,&#039;123&#039;,&#039;126&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course == &#039;CB&#039;){  filter_course = [&#039;3&#039;,&#039;13&#039;,&#039;23&#039;,&#039;34&#039;,&#039;35&#039;,&#039;123&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course == &#039;AM&#039;){  filter_course = [&#039;4&#039;,&#039;14&#039;,&#039;24&#039;,&#039;34&#039;,&#039;124&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;] } else if(course == &#039;SS&#039;){  filter_course = [&#039;5&#039;,&#039;15&#039;,&#039;25&#039;,&#039;35&#039;,&#039;125&#039;,&#039;135&#039;,&#039;235&#039;,&#039;2345&#039;,&#039;12345&#039;,&#039;56&#039;,&#039;57&#039;] } else if(course == &#039;DES&#039;){  filter_course = [&#039;6&#039;,&#039;16&#039;,&#039;26&#039;,&#039;126&#039;,&#039;56&#039;] } else if(course == &#039;OTHERS&#039;){  filter_course = [&#039;7&#039;,&#039;57&#039;] } for (var i = filter_course.length - 1; i &gt;= 0; i--) {  $(&quot;div.facultycard&quot;).filter(&quot;[dept=&#039;&quot; + filter_course[i] + &quot;&#039;]&quot;).css(&quot;display&quot;,&quot;&quot;);  $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;&quot; + filter_course[i] + &quot;&#039;]&quot;).addClass(&quot;select-item-active&quot;);  }; var sub_list = all_list.diff(filter_course); for(var i = sub_list.length - 1; i&gt;=0; i--){ $(&quot;div.facultycard&quot;).filter(&quot;[dept=&#039;&quot; + sub_list[i] + &quot;&#039;]&quot;).css(&quot;display&quot;,&quot;none&quot;); $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;&quot; + sub_list[i] + &quot;&#039;]&quot;).removeClass(&quot;select-item-active&quot;); } }; $.showAllFaculty(); }); .select { display:block; text-align:center; } .select-item { display:inline-block; color:#fff; background-color:#3fada8; border-radius:2px; border:1px solid #3fada8; cursor:pointer; padding:4px 10px; margin:5px; transition:0.4s; } .select-item:hover,.select-item.select-item-active { background-color:#fff; color:#3fada8; } #cards-container { display:block; text-align:center; padding:10px; } #cards-container .card { width:350px; height:255px; vertical-align:top; border-radius:4px; border:1px solid #ddd; background:#fafafa; padding:20px; display:inline-block; margin:10px; overflow:hidden; } #cards-container .card img { /*height:130px!important; width:110px!important;*/ width:auto; padding:3px!important; background:#fff; margin:0!important; margin-right:20px!important; margin-bottom:20px!important; } #cards-container .card hr { margin:0; margin-top:20px; margin-bottom:10px; background:-webkit-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-moz-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-ms-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-o-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); clear:both; } @media screen and (max-width:500px) { #cards-container .card { width:80%; } } The Institute is organized as research groups and education programs, and has not maintained strong department boundaries. However, faculty can be broadly grouped according to their disciplines which are given below. Apart from those listed below, the institute also has a number of Guest, Adjunct and Visiting faculty members in various disciplines. They can be found on this page. Click below to display faculty members from a specific discipline. All Computational Biology CSE ECE Human-Centered Design Mathematics Social Sciences and Humanities Others     Visiting Faculty" />
+<meta property="article:published_time" content="2016-03-04T16:05:32+05:30" />
+<meta property="article:modified_time" content="2018-12-24T15:09:50+05:30" />
+<meta itemprop="name" content="Faculty" />
+<meta itemprop="description" content="$(document).ready(function(){ Array.prototype.diff = function(a) {  return this.filter(function(i) {return a.indexOf(i) &lt; 0;}); }; $.showAllFaculty = function(){ $(&quot;div.facultycard&quot;).css(&quot;display&quot;,&quot;&quot;); $(&quot;div.facultycard&quot;).filter(&quot;[type=&#039;visiting&#039;]&quot;).css(&quot;display&quot;,&quot;none&quot;); $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;all&#039;]&quot;).addClass(&quot;select-item-active&quot;); $(&quot;div.select-item&quot;).not(&quot;[dept=&#039;all&#039;]&quot;).removeClass(&quot;select-item-active&quot;); } /* 1 - CSE 2 - ECE 3 - CB 4 - AM 5 - SS 6 - DES 7 - OTHERS 12 - CSE and ECE 13 - CSE and CB 14 - CSE and AM 15 - CSE and SS 23 - ECE and CB 24 - ECE and AM 25 - ECE and SS 34 - CB and AM 35 - CB and SS 123 - CSE, ECE, CB 124 - CSE, ECE, AM 125 - CSE, ECE, SS 134 - CSE, CB, AM 135 - CSE, CB, SS 234 - ECE, CB, AM 235 - ECE, CB, SS 2345 - ECE, CB, AM, SS 1234 - CSE, ECE, CB, AM 12345 - All branches 56 - SS, DES 57 - SS, OTHERS */ all_list= [&#039;0&#039;,&#039;1&#039;,&#039;2&#039;,&#039;3&#039;,&#039;4&#039;,&#039;5&#039;,&#039;6&#039;,&#039;7&#039;,&#039;12&#039;,&#039;13&#039;,&#039;14&#039;,&#039;15&#039;,&#039;16&#039;,&#039;23&#039;,&#039;24&#039;,&#039;25&#039;,&#039;26&#039;,&#039;34&#039;,&#039;35&#039;,&#039;123&#039;,&#039;126&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;,&#039;56&#039;,&#039;57&#039;]; $.filterFaculty = function(course){ $(&quot;div.select-item&quot;).filter(&quot;[dept=course]&quot;).addClass(&quot;select-item-active&quot;); $(&quot;div.select-item&quot;).not(&quot;[dept=course]&quot;).removeClass(&quot;select-item-active&quot;); if(course==&#039;CSE&#039;){  filter_course = [&#039;1&#039;,&#039;12&#039;,&#039;13&#039;,&#039;14&#039;,&#039;15&#039;,&#039;16&#039;,&#039;123&#039;,&#039;126&#039;,&#039;134&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course==&#039;ECE&#039;){  filter_course = [&#039;2&#039;,&#039;12&#039;,&#039;23&#039;,&#039;24&#039;,&#039;25&#039;,&#039;26&#039;,&#039;123&#039;,&#039;126&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course == &#039;CB&#039;){  filter_course = [&#039;3&#039;,&#039;13&#039;,&#039;23&#039;,&#039;34&#039;,&#039;35&#039;,&#039;123&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course == &#039;AM&#039;){  filter_course = [&#039;4&#039;,&#039;14&#039;,&#039;24&#039;,&#039;34&#039;,&#039;124&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;] } else if(course == &#039;SS&#039;){  filter_course = [&#039;5&#039;,&#039;15&#039;,&#039;25&#039;,&#039;35&#039;,&#039;125&#039;,&#039;135&#039;,&#039;235&#039;,&#039;2345&#039;,&#039;12345&#039;,&#039;56&#039;,&#039;57&#039;] } else if(course == &#039;DES&#039;){  filter_course = [&#039;6&#039;,&#039;16&#039;,&#039;26&#039;,&#039;126&#039;,&#039;56&#039;] } else if(course == &#039;OTHERS&#039;){  filter_course = [&#039;7&#039;,&#039;57&#039;] } for (var i = filter_course.length - 1; i &gt;= 0; i--) {  $(&quot;div.facultycard&quot;).filter(&quot;[dept=&#039;&quot; + filter_course[i] + &quot;&#039;]&quot;).css(&quot;display&quot;,&quot;&quot;);  $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;&quot; + filter_course[i] + &quot;&#039;]&quot;).addClass(&quot;select-item-active&quot;);  }; var sub_list = all_list.diff(filter_course); for(var i = sub_list.length - 1; i&gt;=0; i--){ $(&quot;div.facultycard&quot;).filter(&quot;[dept=&#039;&quot; + sub_list[i] + &quot;&#039;]&quot;).css(&quot;display&quot;,&quot;none&quot;); $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;&quot; + sub_list[i] + &quot;&#039;]&quot;).removeClass(&quot;select-item-active&quot;); } }; $.showAllFaculty(); }); .select { display:block; text-align:center; } .select-item { display:inline-block; color:#fff; background-color:#3fada8; border-radius:2px; border:1px solid #3fada8; cursor:pointer; padding:4px 10px; margin:5px; transition:0.4s; } .select-item:hover,.select-item.select-item-active { background-color:#fff; color:#3fada8; } #cards-container { display:block; text-align:center; padding:10px; } #cards-container .card { width:350px; height:255px; vertical-align:top; border-radius:4px; border:1px solid #ddd; background:#fafafa; padding:20px; display:inline-block; margin:10px; overflow:hidden; } #cards-container .card img { /*height:130px!important; width:110px!important;*/ width:auto; padding:3px!important; background:#fff; margin:0!important; margin-right:20px!important; margin-bottom:20px!important; } #cards-container .card hr { margin:0; margin-top:20px; margin-bottom:10px; background:-webkit-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-moz-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-ms-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-o-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); clear:both; } @media screen and (max-width:500px) { #cards-container .card { width:80%; } } The Institute is organized as research groups and education programs, and has not maintained strong department boundaries. However, faculty can be broadly grouped according to their disciplines which are given below. Apart from those listed below, the institute also has a number of Guest, Adjunct and Visiting faculty members in various disciplines. They can be found on this page. Click below to display faculty members from a specific discipline. All Computational Biology CSE ECE Human-Centered Design Mathematics Social Sciences and Humanities Others     Visiting Faculty" />
+<meta name="dcterms.title" content="Faculty" />
+<meta name="dcterms.creator" content="ankit" />
+<meta name="dcterms.description" content="$(document).ready(function(){ Array.prototype.diff = function(a) {  return this.filter(function(i) {return a.indexOf(i) &lt; 0;}); }; $.showAllFaculty = function(){ $(&quot;div.facultycard&quot;).css(&quot;display&quot;,&quot;&quot;); $(&quot;div.facultycard&quot;).filter(&quot;[type=&#039;visiting&#039;]&quot;).css(&quot;display&quot;,&quot;none&quot;); $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;all&#039;]&quot;).addClass(&quot;select-item-active&quot;); $(&quot;div.select-item&quot;).not(&quot;[dept=&#039;all&#039;]&quot;).removeClass(&quot;select-item-active&quot;); } /* 1 - CSE 2 - ECE 3 - CB 4 - AM 5 - SS 6 - DES 7 - OTHERS 12 - CSE and ECE 13 - CSE and CB 14 - CSE and AM 15 - CSE and SS 23 - ECE and CB 24 - ECE and AM 25 - ECE and SS 34 - CB and AM 35 - CB and SS 123 - CSE, ECE, CB 124 - CSE, ECE, AM 125 - CSE, ECE, SS 134 - CSE, CB, AM 135 - CSE, CB, SS 234 - ECE, CB, AM 235 - ECE, CB, SS 2345 - ECE, CB, AM, SS 1234 - CSE, ECE, CB, AM 12345 - All branches 56 - SS, DES 57 - SS, OTHERS */ all_list= [&#039;0&#039;,&#039;1&#039;,&#039;2&#039;,&#039;3&#039;,&#039;4&#039;,&#039;5&#039;,&#039;6&#039;,&#039;7&#039;,&#039;12&#039;,&#039;13&#039;,&#039;14&#039;,&#039;15&#039;,&#039;16&#039;,&#039;23&#039;,&#039;24&#039;,&#039;25&#039;,&#039;26&#039;,&#039;34&#039;,&#039;35&#039;,&#039;123&#039;,&#039;126&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;,&#039;56&#039;,&#039;57&#039;]; $.filterFaculty = function(course){ $(&quot;div.select-item&quot;).filter(&quot;[dept=course]&quot;).addClass(&quot;select-item-active&quot;); $(&quot;div.select-item&quot;).not(&quot;[dept=course]&quot;).removeClass(&quot;select-item-active&quot;); if(course==&#039;CSE&#039;){  filter_course = [&#039;1&#039;,&#039;12&#039;,&#039;13&#039;,&#039;14&#039;,&#039;15&#039;,&#039;16&#039;,&#039;123&#039;,&#039;126&#039;,&#039;134&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course==&#039;ECE&#039;){  filter_course = [&#039;2&#039;,&#039;12&#039;,&#039;23&#039;,&#039;24&#039;,&#039;25&#039;,&#039;26&#039;,&#039;123&#039;,&#039;126&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course == &#039;CB&#039;){  filter_course = [&#039;3&#039;,&#039;13&#039;,&#039;23&#039;,&#039;34&#039;,&#039;35&#039;,&#039;123&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;]; } else if(course == &#039;AM&#039;){  filter_course = [&#039;4&#039;,&#039;14&#039;,&#039;24&#039;,&#039;34&#039;,&#039;124&#039;,&#039;134&#039;,&#039;234&#039;,&#039;2345&#039;,&#039;1234&#039;,&#039;12345&#039;] } else if(course == &#039;SS&#039;){  filter_course = [&#039;5&#039;,&#039;15&#039;,&#039;25&#039;,&#039;35&#039;,&#039;125&#039;,&#039;135&#039;,&#039;235&#039;,&#039;2345&#039;,&#039;12345&#039;,&#039;56&#039;,&#039;57&#039;] } else if(course == &#039;DES&#039;){  filter_course = [&#039;6&#039;,&#039;16&#039;,&#039;26&#039;,&#039;126&#039;,&#039;56&#039;] } else if(course == &#039;OTHERS&#039;){  filter_course = [&#039;7&#039;,&#039;57&#039;] } for (var i = filter_course.length - 1; i &gt;= 0; i--) {  $(&quot;div.facultycard&quot;).filter(&quot;[dept=&#039;&quot; + filter_course[i] + &quot;&#039;]&quot;).css(&quot;display&quot;,&quot;&quot;);  $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;&quot; + filter_course[i] + &quot;&#039;]&quot;).addClass(&quot;select-item-active&quot;);  }; var sub_list = all_list.diff(filter_course); for(var i = sub_list.length - 1; i&gt;=0; i--){ $(&quot;div.facultycard&quot;).filter(&quot;[dept=&#039;&quot; + sub_list[i] + &quot;&#039;]&quot;).css(&quot;display&quot;,&quot;none&quot;); $(&quot;div.select-item&quot;).filter(&quot;[dept=&#039;&quot; + sub_list[i] + &quot;&#039;]&quot;).removeClass(&quot;select-item-active&quot;); } }; $.showAllFaculty(); }); .select { display:block; text-align:center; } .select-item { display:inline-block; color:#fff; background-color:#3fada8; border-radius:2px; border:1px solid #3fada8; cursor:pointer; padding:4px 10px; margin:5px; transition:0.4s; } .select-item:hover,.select-item.select-item-active { background-color:#fff; color:#3fada8; } #cards-container { display:block; text-align:center; padding:10px; } #cards-container .card { width:350px; height:255px; vertical-align:top; border-radius:4px; border:1px solid #ddd; background:#fafafa; padding:20px; display:inline-block; margin:10px; overflow:hidden; } #cards-container .card img { /*height:130px!important; width:110px!important;*/ width:auto; padding:3px!important; background:#fff; margin:0!important; margin-right:20px!important; margin-bottom:20px!important; } #cards-container .card hr { margin:0; margin-top:20px; margin-bottom:10px; background:-webkit-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-moz-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-ms-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:-o-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); background:linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0)); clear:both; } @media screen and (max-width:500px) { #cards-container .card { width:80%; } } The Institute is organized as research groups and education programs, and has not maintained strong department boundaries. However, faculty can be broadly grouped according to their disciplines which are given below. Apart from those listed below, the institute also has a number of Guest, Adjunct and Visiting faculty members in various disciplines. They can be found on this page. Click below to display faculty members from a specific discipline. All Computational Biology CSE ECE Human-Centered Design Mathematics Social Sciences and Humanities Others     Visiting Faculty" />
+<meta name="dcterms.date" content="2016-03-04T16:05+05:30" />
+<meta name="dcterms.type" content="Text" />
+<meta name="dcterms.format" content="text/html" />
+<meta name="dcterms.identifier" content="https://www.iiitd.ac.in/people/faculty" />
+<link rel="shortcut icon" href="https://www.iiitd.ac.in/sites/all/themes/impact_theme/favicon.ico" type="image/ico" />
+<title>Faculty | IIIT-Delhi</title>
+<style type="text/css" media="all">
+@import url("https://www.iiitd.ac.in/modules/system/system.base.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/modules/system/system.menus.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/modules/system/system.messages.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/modules/system/system.theme.css?pr8i0b");
+</style>
+<style type="text/css" media="all">
+@import url("https://www.iiitd.ac.in/modules/comment/comment.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/sites/all/modules/date/date_api/date.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/sites/all/modules/date/date_popup/themes/datepicker.1.7.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/sites/all/modules/date/date_repeat_field/date_repeat_field.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/modules/field/theme/field.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/sites/all/modules/google_cse/google_cse.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/modules/node/node.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/modules/search/search.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/modules/user/user.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/sites/all/modules/views/css/views.css?pr8i0b");
+@import url("https://www.iiitd.ac.in/sites/all/modules/ckeditor/css/ckeditor.css?pr8i0b");
+</style>
+<style type="text/css" media="all">
+@import url("https://www.iiitd.ac.in/sites/all/modules/ctools/css/ctools.css?pr8i0b");
+</style>
+<style type="text/css" media="all">
+@import url("https://www.iiitd.ac.in/sites/all/themes/impact_theme/style.css?pr8i0b");
+</style>
+<script type="text/javascript" src="https://www.iiitd.ac.in/misc/jquery.js?v=1.4.4"></script>
+<script type="text/javascript" src="https://www.iiitd.ac.in/misc/jquery-extend-3.4.0.js?v=1.4.4"></script>
+<script type="text/javascript" src="https://www.iiitd.ac.in/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://www.iiitd.ac.in/misc/drupal.js?pr8i0b"></script>
+<script type="text/javascript" src="https://www.iiitd.ac.in/sites/all/modules/admin_menu/admin_devel/admin_devel.js?pr8i0b"></script>
+<script type="text/javascript" src="https://www.iiitd.ac.in/sites/all/modules/google_cse/google_cse.js?pr8i0b"></script>
+<script type="text/javascript" src="https://www.iiitd.ac.in/sites/all/modules/google_analytics/googleanalytics.js?pr8i0b"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create", "UA-21292205-2", {"cookieDomain":".iiitd.ac.in"});ga("set", "anonymizeIp", true);ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.iiitd.ac.in/sites/all/themes/impact_theme/js/main-menu.js?pr8i0b"></script>
+<script type="text/javascript" src="https://www.iiitd.ac.in/sites/all/themes/impact_theme/js/pngfix.min.js?pr8i0b"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"impact_theme","theme_token":"RLNOCrfvJ_HdVeg6Z4EUvTDdZJN7K5uI75FO1bucWhU","js":{"modules\/statistics\/statistics.js":1,"misc\/jquery.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/admin_menu\/admin_devel\/admin_devel.js":1,"sites\/all\/modules\/google_cse\/google_cse.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"0":1,"sites\/all\/themes\/impact_theme\/js\/main-menu.js":1,"sites\/all\/themes\/impact_theme\/js\/pngfix.min.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/google_cse\/google_cse.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/themes\/impact_theme\/style.css":1}},"googleCSE":{"cx":"016449597361754656290:ntnepyrxice","language":"","resultsWidth":600,"domain":"www.iiitd.ac.in"},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackDomainMode":"1"},"urlIsAjaxTrusted":{"\/people\/faculty":true},"statistics":{"data":{"nid":"23"},"url":"\/modules\/statistics\/statistics.php"}});
+//--><!]]>
+</script>
+<!--[if lt IE 9]><script src="/sites/all/themes/impact_theme/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-23 node-type-page wide-sidebar">
+    <link rel="stylesheet" href="/sites/all/themes/impact_theme/fonts/css/font-awesome.min.css">
+
+<link href='https://fonts.googleapis.com/css?family=Roboto:900,700,500' rel='stylesheet' type='text/css'>
+
+
+  <header id="header" class="clearfix">
+  <div id="wrapper-head" style="max-width:75%!important;">
+          <div id="site-logo"><a href="/" title="Home">
+        <img src="https://www.iiitd.ac.in/sites/all/themes/impact_theme/logo.png" alt="Home" />
+      </a></div>                      <div class="social-profile">
+
+        <ul>
+          <!--<li class="linkedin"><a href="https://www.linkedin.com/edu/school?id=373028" title="Linkedin" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li> -->
+		  <li class="linkedin"><a href="https://www.linkedin.com/feed/update/urn:li:activity:6544115327544987648" title="Linkedin" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+          <li class="facebook"><a href="https://www.facebook.com/IIITDelhi" title="IIIT-Delhi on Facebook" href="https://www.facebook.com/IIITDelhi" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+
+          <li class="twitter"><a href="https://twitter.com/IIITDelhi" title="IIIT-Delhi on Twitter" href="https://twitter.com/IIITDelhi" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+
+          <li class="google-plus"><a href="https://google.com/+IIITDelhi" title="IIIT-Delhi on Google+" href="https://google.com/+IIITDelhi" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+
+          <!--<li class="rss"><a href="/rss.xml" title="IIIT-Delhi RSS" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></li> -->
+		  
+		  <li class="instagram"><a href="https://www.instagram.com/iiit.delhi/" title="Instagram" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+		<form class="google-cse" action="/people/faculty" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-45SY41hgsaC4St-b2umXPcNqvZmdqI1-ho-pdn1ED3Y" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>        <form action="/search/">
+         <!--<input type="text" style="height: 18px;background:#f7f7f7;border:0;outline:0;width:170px;" placeholder="Search">-->
+         </form>
+	<div style="clear:both;"></div>
+	<p style="margin-bottom:0px;"><a href="http://library.iiitd.edu.in"  style="color:#3FADA8;font-weight:bold;font-size:14px">Library</a> | <a href="/careers"  style="color:#3FADA8;font-weight:bold;font-size:14px">Career</a> | <a href="/directory"  style="color:#3FADA8;font-weight:bold;font-size:14px">Directory</a> | <a href="/internal-links"  style="color:#3FADA8;font-weight:bold;font-size:14px">Internal links</a> <!--| <a href="http://old.iiitd.ac.in" target="_blank" style="color:#3FADA8;font-weight:bold;font-size:14px">Old Website</a> --> | <a href="http://mail.iiitd.ac.in" target="_blank" style="color:#3FADA8;font-weight:bold;font-size:14px">Webmail</a> </p>
+      </div>
+        </div>
+    <div id="nav-wrapper">
+    <div id="wrapper-nav">
+    <nav id="navigation" role="navigation">
+      <div id="main-menu" style="width:75%;margin:0 auto">
+        <ul class="menu"><li class="first expanded"><a href="/" title="">Home</a><ul class="menu"><li class="first leaf"><a href="/about" title="About IIITD">About Institute</a></li>
+<li class="leaf"><a href="/about/vision" title="Mission and Vision">Mission and Vision</a></li>
+<li class="leaf"><a href="/about/act">Act and Statute</a></li>
+<li class="leaf"><a href="/about/governing-body" title="General Council &amp; Governing Body">General Council</a></li>
+<li class="leaf"><a href="/about/faq" title="FAQ">FAQ</a></li>
+<li class="leaf"><a href="/about/graphic-identity" title="Graphic Identity">Graphic Identity</a></li>
+<li class="leaf"><a href="/media-coverages" title="Media Coverages">Media</a></li>
+<li class="leaf"><a href="/about/opinions" title="Opinions">Opinions</a></li>
+<li class="last leaf"><a href="/newsletter" title="Newsletter">Newsletter</a></li>
+</ul></li>
+<li class="expanded"><a href="/admission">Admission</a><ul class="menu"><li class="first leaf"><a href="/admission/btech/2019" title="B.Tech">BTech</a></li>
+<li class="leaf"><a href="/admission/mtech/2020" title="M.Tech">MTech</a></li>
+<li class="collapsed"><a href="/admission/phd/apr2020" title="PhD Admission">PhD</a></li>
+<li class="leaf"><a href="/admission/visitingstudents" title="Visiting Students">Visiting Students</a></li>
+<li class="leaf"><a href="https://ia.iiitd.ac.in/" title="International  Students">International Students</a></li>
+<li class="leaf"><a href="/admission/fees" title="Fees">Fees</a></li>
+<li class="last leaf"><a href="/admission/scholarships" title="Fee Waiver and Fellowship">Fee Waiver and Fellowship</a></li>
+</ul></li>
+<li class="expanded active-trail"><a href="/people" class="active-trail">People</a><ul class="menu"><li class="first leaf"><a href="/people/administration" title="Administration">Administration</a></li>
+<li class="leaf active-trail"><a href="/people/faculty" title="Faculty" class="active-trail active">Faculty</a></li>
+<li class="leaf"><a href="/people/visiting-faculty" title="Visiting Faculty">Visiting Faculty</a></li>
+<li class="leaf"><a href="/people/adjunct-faculty">Adjunct Faculty</a></li>
+<li class="expanded"><a href="/people/btech/2019" title="BTech Students">BTech Students</a><ul class="menu"><li class="first leaf"><a href="/people/btech/2019" title="">Current</a></li>
+<li class="last leaf"><a href="/people/btech/graduated/2015">Graduated</a></li>
+</ul></li>
+<li class="expanded"><a href="/people/mtech/2017">MTech Students</a><ul class="menu"><li class="first leaf"><a href="/people/mtech/current">Current</a></li>
+<li class="last leaf"><a href="/people/mtech/graduated/2015">Graduated</a></li>
+</ul></li>
+<li class="expanded"><a href="/people/phd/current">PhD Students</a><ul class="menu"><li class="first leaf"><a href="/people/phd/current" title="Current Phd Students">Current</a></li>
+<li class="last leaf"><a href="/people/phd/graduated" title="Graduated PhD Students">Graduated</a></li>
+</ul></li>
+<li class="last collapsed"><a href="http://alumni.iiitd.ac.in/" title="">Alumni</a></li>
+</ul></li>
+<li class="expanded"><a href="/academics">Academics</a><ul class="menu"><li class="first expanded"><a href="/academics/academic-admin/administration" title="Academic Administration">Academic Administration</a><ul class="menu"><li class="first last leaf"><a href="/academics/academic-admin/issue-resolution">Issue Resolution</a></li>
+</ul></li>
+<li class="leaf"><a href="/academics/departments" title="Departments">Departments</a></li>
+<li class="expanded"><a href="/academics/courses" title="Courses">Courses</a><ul class="menu"><li class="first leaf"><a href="/academics/courses/institute" title="Institute">Institute</a></li>
+<li class="leaf"><a href="/academics/courses/online" title="Online Courses">Online</a></li>
+<li class="last leaf"><a href="/academics/courses/special" title="Special Courses">Special</a></li>
+</ul></li>
+<li class="leaf"><a href="/academics/w2020" title="Current Sem (Winter 2020)">Current Sem (Winter 2020)</a></li>
+<li class="expanded"><a href="/academics/btech" title="B.Tech (CSE/ECE/CSAM/CSD/CSSS/CSAI)">B.Tech Program</a><ul class="menu"><li class="first leaf"><a href="/academics/btech/cse" title="B.Tech. in Computer Science and Engineering (CSE)">CSE</a></li>
+<li class="leaf"><a href="/academics/btech/ece" title="BTech in Electronics and Communications Engineering (ECE)">ECE</a></li>
+<li class="leaf"><a href="/academics/btech/csam" title="B.Tech. in Computer Science and Applied Mathematics (CSAM)">CSAM</a></li>
+<li class="leaf"><a href="/academics/btech/csd" title="B.Tech. in Computer Science and Design (CSD)">CSD</a></li>
+<li class="leaf"><a href="/academics/btech/csss" title="B.Tech in Computer Science and Social Sciences">CSSS</a></li>
+<li class="leaf"><a href="/academics/btech/csb" title="B.Tech. in Computer Science and Biosciences">CSB</a></li>
+<li class="leaf"><a href="/academics/btech/csai" title="B.Tech. in Computer Science and Artificial Intelligence (CSAI)">CSAI</a></li>
+<li class="leaf"><a href="/academics/btech/honors" title="Honors Program">Honors Program</a></li>
+<li class="leaf"><a href="/academics/btech/btp" title="B.Tech Project">BTP</a></li>
+<li class="last leaf"><a href="/academics/btech/language-lab" title="Language Lab">Language Lab</a></li>
+</ul></li>
+<li class="expanded"><a href="/academics/mtech" title="M.Tech (CSE, ECE and CB)">M.Tech Program</a><ul class="menu"><li class="first leaf"><a href="/academics/mtech/cse" title="M.Tech in Computer Science and Engineering (CSE)">CSE</a></li>
+<li class="leaf"><a href="/academics/mtech/ece" title="M.Tech in Electronics and Communications Engineering (ECE)">ECE</a></li>
+<li class="last leaf"><a href="/academics/mtech/cb" title="M.Tech in Computational Biology (CB)">CB</a></li>
+</ul></li>
+<li class="leaf"><a href="/academics/phd">PhD Program</a></li>
+<li class="leaf"><a href="/academics/resources" title="Academic Resources">Resources</a></li>
+<li class="leaf"><a href="/academics/svp" title="Student Verification">Student Verification</a></li>
+<li class="last expanded"><a href="https://www.iiitd.ac.in/convocation19/" title="Convocation 2019">Convocation</a><ul class="menu"><li class="first last leaf"><a href="/academics/pastconvocations" title="Past Convocations">Past Convocations</a></li>
+</ul></li>
+</ul></li>
+<li class="expanded"><a href="/research" title="Research at IIIT-D">Research</a><ul class="menu"><li class="first leaf"><a href="/research/radmin" title="Research Administration">Research Administration</a></li>
+<li class="leaf"><a href="/research/rareas" title="Research Areas">Research Areas</a></li>
+<li class="leaf"><a href="/research/rcg" title="Research Centres &amp; Groups">Research Centres &amp; Groups</a></li>
+<li class="leaf"><a href="/research/rsnews" title="Research News">Research News</a></li>
+<li class="leaf"><a href="/research/fellowships-awards" title="Fellowships &amp; Awards">Fellowships &amp; Awards</a></li>
+<li class="expanded"><a href="/research/events" title="Research Events at IIIT-Delhi">Events</a><ul class="menu"><li class="first leaf"><a href="/research/events/seminars" title="Research Seminars at IIIT-Delhi">Institute seminars</a></li>
+<li class="leaf"><a href="/research/rs" title="Research Showcase">Research Showcase</a></li>
+<li class="leaf"><a href="/research/events/workshops-school" title="Workshops/Schools/Talks">Workshops/Schools/Talks</a></li>
+<li class="last leaf"><a href="/research/events/distinguished-speaker-series" title="Distinguished Speaker Series">Distinguished Speaker Series</a></li>
+</ul></li>
+<li class="expanded"><a href="/research/projects" title="Research Projects">Research Projects</a><ul class="menu"><li class="first leaf"><a href="/research/projects/srp" title="SRPs">SRP</a></li>
+<li class="last leaf"><a href="/research/projects/consultancy">Consultancy</a></li>
+</ul></li>
+<li class="leaf"><a href="/research/publications" title="Publications">Publications</a></li>
+<li class="last leaf"><a href="/research/collaborations" title="Collaborations">Collaborations</a></li>
+</ul></li>
+<li class="expanded"><a href="/facilities" title="Facilities &amp; Services">Facilities &amp; Services</a><ul class="menu"><li class="first leaf"><a href="https://iiitd.ac.in/gallery" title="Photo Gallery">Photo Gallery</a></li>
+<li class="leaf"><a href="/facilities/wbc" title="Well-Being Cell">Well-Being Cell</a></li>
+<li class="leaf"><a href="https://www.iiitd.edu.in/smp/" title="Student Mentorship Program">Student Mentorship Program</a></li>
+<li class="leaf"><a href="http://library.iiitd.edu.in" title="Library">Library</a></li>
+<li class="leaf"><a href="/facilities/tlabs/computer_lab" title="Computer Labs">Computer Labs</a></li>
+<li class="expanded"><a href="/facilities/it" title="IT Infrastructure">IT Infrastructure</a><ul class="menu"><li class="first leaf"><a href="/facilities/compservices" title="Computing Services">Computing Services</a></li>
+<li class="last leaf"><a href="/facilities/swservices" title="Software Services">Software Services</a></li>
+</ul></li>
+<li class="leaf"><a href="https://ecelabs.iiitd.edu.in/" title="ECE Labs">ECE Labs</a></li>
+<li class="leaf"><a href="/facilities/green_policy" title="Green policy">Green policy</a></li>
+<li class="leaf"><a href="/facilities/guesthouse" title="Guesthouse">Guesthouse</a></li>
+<li class="leaf"><a href="http://dilab.iiitd.ac.in" title="Design and Innovation Lab">Design and Innovation Lab</a></li>
+<li class="leaf"><a href="/facilities/fms" title="FMS">FMS</a></li>
+<li class="leaf"><a href="/facilities/medical" title="Medical Facilities">Medical</a></li>
+<li class="leaf"><a href="/facilities/dining" title="Dining Services">Dining Services</a></li>
+<li class="last leaf"><a href="http://www.iiitdic.in/" title="Incubation Centre">Incubation Centre</a></li>
+</ul></li>
+<li class="expanded"><a href="/sa" title="STUDENT AFFAIRS">Student Affairs</a><ul class="menu"><li class="first leaf"><a href="/life/events-news" title="Events and News">Events and News</a></li>
+<li class="expanded"><a href="/life/hostels" title="Hostels">Hostels</a><ul class="menu"><li class="first leaf"><a href="/life/hostels/about-hostels">About Hostels</a></li>
+<li class="leaf"><a href="/life/hostels/hostel-policies">Hostel Policies</a></li>
+<li class="leaf"><a href="/life/hostels/allocation-policies">Allocation Policies</a></li>
+<li class="last leaf"><a href="/life/hostels/hostel-site">Hostel&#039;s Site</a></li>
+</ul></li>
+<li class="leaf"><a href="/life/sports-recreation" title="Sports and Recreation">Sports and Recreation</a></li>
+<li class="leaf"><a href="/life/student-clubs" title="Student Clubs">Student Clubs</a></li>
+<li class="leaf"><a href="/life/student-conduct" title="Student Conduct Policy">Student Conduct</a></li>
+<li class="expanded"><a href="/life/student-festivals" title="Student Festivals">Student Festivals</a><ul class="menu"><li class="first leaf"><a href="http://esya.iiitd.edu.in/" title="Exploring infinity and beyond.">Esya</a></li>
+<li class="leaf"><a href="http://odyssey.iiitd.edu.in/" title="Annual Cultural Festival of IIIT Delhi.">Odyssey</a></li>
+<li class="last leaf"><a href="https://www.facebook.com/triquetrasportsfest/" title="">Triquetra</a></li>
+</ul></li>
+<li class="expanded"><a href="/life/student-governance" title="Student Governance">Student Governance</a><ul class="menu"><li class="first leaf"><a href="http://studentcouncil.iiitd.edu.in/" title="">Student Council</a></li>
+<li class="leaf"><a href="http://studentsenate.iiitd.edu.in/" title="">Student Senate</a></li>
+<li class="leaf"><a href="/life/mhcomittee" title="Mess and Hostel committee">Mess and Hostel Committee</a></li>
+<li class="leaf"><a href="/life/sportscouncil" title="sports council">Sports Council</a></li>
+<li class="last leaf"><a href="/life/icswd" title="Internal Committee for the Students with Disabilities">ICSWD</a></li>
+</ul></li>
+<li class="last expanded"><a href="/life/discipline-grievance" title="Discipline and Grievance">Discipline and Grievance</a><ul class="menu"><li class="first leaf"><a href="/life/discipline-grievance/student-code-of-conduct">Students&#039; Code of Conduct</a></li>
+<li class="leaf"><a href="/life/discipline-grievance/grievance-redressal">Grievance Redressal</a></li>
+<li class="leaf"><a href="/life/discipline-grievance/disciplinary-action">Disciplinary Action</a></li>
+<li class="leaf"><a href="/life/discipline-grievance/anti-sexual-harassment-committee">Anti Sexual Harassment Committee</a></li>
+<li class="leaf"><a href="/life/discipline-grievance/anti-ragging-committee">Anti Ragging Committee</a></li>
+<li class="last leaf"><a href="/life/discipline-grievance/issue-resolution" title="Issue Resolution">Issue Resolution</a></li>
+</ul></li>
+</ul></li>
+<li class="expanded"><a href="/placement" title="Placement &amp; Outreach">Placement &amp; Outreach</a><ul class="menu"><li class="first leaf"><a href="/placement/messages">Messages</a></li>
+<li class="leaf"><a href="/placement/why-recruit">Why Recruit @ IIITD?</a></li>
+<li class="leaf"><a href="/placement/procedure">Placement Procedure</a></li>
+<li class="expanded"><a href="/placement/stats">Placement Statistics 2019</a><ul class="menu"><li class="first last leaf"><a href="/placement/past-stats">Past Statistics</a></li>
+</ul></li>
+<li class="leaf"><a href="/placement/past-recruiters">Our Recruiters</a></li>
+<li class="leaf"><a href="/placement/about-batch">Batch Graduating 2020</a></li>
+<li class="expanded"><a href="/placement/internships">Internships</a><ul class="menu"><li class="first leaf"><a href="/placement/internships/stats">Statistics</a></li>
+<li class="leaf"><a href="/placement/past-internships">Past Internships</a></li>
+<li class="leaf"><a href="/placement/summer-internships" title="Summer Internships @ IIITD">Summer Internships @ IIITD</a></li>
+<li class="leaf"><a href="/placement/result-si2019" title="Summer Internships @ IIITD">Summer Internships @ IIITD 2019 Result</a></li>
+<li class="last leaf"><a href="/placement/internship-details" title="Internship Details">Internship Details</a></li>
+</ul></li>
+<li class="expanded"><a href="/indi" title="Industry Outreach">Industry Outreach</a><ul class="menu"><li class="first leaf"><a href="/placement/iop/messages" title="Messages from the Patrons">Messages from the Patrons</a></li>
+<li class="leaf"><a href="/placement/iop/iemodes" title="Modes of Industry Engagements">Modes of Industry Engagements</a></li>
+<li class="last leaf"><a href="/placement/iop/contact" title="Contact IOP">Contact IOP</a></li>
+</ul></li>
+<li class="leaf"><a href="/placement/startups">Our StartUps</a></li>
+<li class="leaf"><a href="/placement/startup19">Startup fair 2019</a></li>
+<li class="leaf"><a href="/placement/higherstudies">Higher Studies</a></li>
+<li class="leaf"><a href="/placement/testimonials">Our Alumni</a></li>
+<li class="last leaf"><a href="/placement/contactT_P">Contact T&amp;P</a></li>
+</ul></li>
+<li class="leaf"><a href="https://giving.iiitd.ac.in" title="Giving to IIITD">Giving to IIITD</a></li>
+<li class="last leaf"><a href="/contact" title="Contact">Contact</a></li>
+</ul>		<!--<span><p style="margin:5px 0 0; float:right;"><a href="http://giving.iiitd.ac.in" target="_blank" style="color:#fff;font-weight:bold;font-size:14px;">Giving to IIITD</a>&nbsp;&nbsp; <a href="/contact"  style="color:#fff;font-weight:bold;font-size:14px">Contact</a></p></span> -->
+      <!--</div> -->
+      </div>
+    </nav>
+    </div>
+    </div>
+  </header>
+
+<div id="wrapper" style="max-width:75%!important;">
+  
+  <div id="main" class="clearfix">
+    <div id="primary">
+      <section id="content" role="main">
+        
+                          <div id="breadcrumbs"><h2 class="element-invisible">You are here</h2><nav class="breadcrumb"><a href="/people">People</a> / </nav></div>
+                                        <div id="content-wrap">
+		 <!-- line added by ankit -->
+                    <h1 class="page-title">Faculty</h1>                              <div class="region region-help">
+  <div id="block-system-main" class="block block-system">
+
+      
+  <div class="content">
+                        <span property="dc:title" content="Faculty" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>  
+      
+    
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+Array.prototype.diff = function(a) {
+    return this.filter(function(i) {return a.indexOf(i) < 0;});
+};
+$.showAllFaculty = function(){
+   $("div.facultycard").css("display","");
+ $("div.facultycard").filter("[type='visiting']").css("display","none");
+  $("div.select-item").filter("[dept='all']").addClass("select-item-active");
+  $("div.select-item").not("[dept='all']").removeClass("select-item-active");
+}
+/*
+1 - CSE
+2 - ECE
+3 - CB
+4 - AM
+5 - SS
+6 - DES
+7 - OTHERS
+12 - CSE and ECE
+13 - CSE and CB
+14 - CSE and AM
+15 - CSE and SS
+23 - ECE and CB
+24 - ECE and AM
+25 - ECE and SS
+34 - CB and AM
+35 - CB and SS
+123 - CSE, ECE, CB
+124 - CSE, ECE, AM
+125 - CSE, ECE, SS
+134 - CSE, CB, AM
+135 - CSE, CB, SS
+234 - ECE, CB, AM
+235 - ECE, CB, SS
+2345 - ECE, CB, AM, SS
+1234 - CSE, ECE, CB, AM
+12345 - All branches
+56 - SS, DES
+57 - SS, OTHERS 
+*/
+all_list= ['0','1','2','3','4','5','6','7','12','13','14','15','16','23','24','25','26','34','35','123','126','134','234','2345','1234','12345','56','57'];
+$.filterFaculty = function(course){
+ $("div.select-item").filter("[dept=course]").addClass("select-item-active");
+  $("div.select-item").not("[dept=course]").removeClass("select-item-active");
+  if(course=='CSE'){
+    filter_course = ['1','12','13','14','15','16','123','126','134','1234','12345'];
+  }
+  else if(course=='ECE'){
+    filter_course = ['2','12','23','24','25','26','123','126','234','2345','1234','12345'];
+  }
+  else if(course == 'CB'){
+    filter_course = ['3','13','23','34','35','123','134','234','2345','1234','12345'];
+  }
+  else if(course == 'AM'){
+    filter_course = ['4','14','24','34','124','134','234','2345','1234','12345']
+  }
+  else if(course == 'SS'){
+    filter_course = ['5','15','25','35','125','135','235','2345','12345','56','57']
+  }
+else if(course == 'DES'){
+    filter_course = ['6','16','26','126','56']
+  }
+  else if(course == 'OTHERS'){
+    filter_course = ['7','57']
+  }
+  for (var i = filter_course.length - 1; i >= 0; i--) {
+    $("div.facultycard").filter("[dept='" + filter_course[i] + "']").css("display","");
+    $("div.select-item").filter("[dept='" + filter_course[i] + "']").addClass("select-item-active");
+   
+  };
+  var sub_list = all_list.diff(filter_course);
+  for(var i = sub_list.length - 1; i>=0; i--){
+  $("div.facultycard").filter("[dept='" + sub_list[i] + "']").css("display","none");
+   $("div.select-item").filter("[dept='" + sub_list[i] + "']").removeClass("select-item-active");
+ }
+};
+$.showAllFaculty();
+
+});
+</script>
+<style type="text/css">
+.select
+{
+display:block;
+text-align:center;
+}
+.select-item
+{
+display:inline-block;
+color:#fff;
+background-color:#3fada8;
+border-radius:2px;
+border:1px solid #3fada8;
+cursor:pointer;
+padding:4px 10px;
+margin:5px;
+transition:0.4s;
+}
+.select-item:hover,.select-item.select-item-active
+{
+background-color:#fff;
+color:#3fada8;
+}
+#cards-container
+{
+display:block;
+text-align:center;
+padding:10px;
+}
+#cards-container .card
+{
+width:350px;
+height:255px;
+vertical-align:top;
+border-radius:4px;
+border:1px solid #ddd;
+background:#fafafa;
+padding:20px;
+display:inline-block;
+margin:10px;
+overflow:hidden;
+}
+
+#cards-container .card img
+{
+/*height:130px!important;
+width:110px!important;*/
+width:auto;
+padding:3px!important;
+background:#fff;
+margin:0!important;
+margin-right:20px!important;
+margin-bottom:20px!important;
+}
+#cards-container .card hr
+{
+margin:0;
+margin-top:20px;
+margin-bottom:10px;
+background:-webkit-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0));
+background:-moz-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0));
+background:-ms-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0));
+background:-o-linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0));
+background:linear-gradient(left, rgba(192,192,192,0), rgba(192,192,192,0.75), rgba(192,192,192,0));
+clear:both;
+}
+
+@media screen and (max-width:500px)
+{
+#cards-container .card
+{
+width:80%;
+}
+}
+</style>
+<p>The Institute is organized as research groups and education programs, and has not maintained strong department boundaries. However, faculty can be broadly grouped according to their disciplines which are given below. Apart from those listed below, the institute also has a number of Guest, Adjunct and Visiting faculty members in various disciplines. They can be found on <a href="/people/visiting-faculty">this page</a>.</p>
+
+<p>Click below to display faculty members from a specific discipline.</p>
+
+<div class="select">
+<div class="select-item select-item-active" onclick="$.showAllFaculty()" dept="all">All</div>
+<div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="CB">Computational Biology</div>
+<div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="CSE">CSE</div>
+<div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="ECE">ECE</div>
+<div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="DES">Human-Centered Design</div>
+<div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="AM">Mathematics</div>
+
+<div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="SS">Social Sciences and Humanities</div>
+<div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="OTHERS">Others</div>
+
+
+</div>
+
+<div id="cards-container">
+<div class="card rteleft facultycard" style="width:245px" dept="12" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/subramanyam.jpg" style="float:left;height:100px;" /><a href="/subramanyam">A V Subramanyam</a></strong>
+<p><strong>Assistant Professor (ECE, CSE)</strong></p>
+
+<p>PhD (2012), Nanyang Technological University, Singapore</p>
+<p>Information Forensics and Security, Multimedia Signal Processing, Visual Surveillance and Deep Learning.</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty//aasim.jpg" style="float:left;height:100px;" /><a href="/aasim">Aasim Khan</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2018), King's College, London</p>
+<p>Social scientist with an interest in theories of the 'public sphere,' digital citizenship and civic media in India</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="6" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/amanparnami.jpg" style="float:left;height:100px;" /><a href="/aman">Aman Parnami</a></strong>
+<p><strong>Head (HCD), Assistant Professor (HCD)</strong></p>
+
+<p>PhD (2017), Georgia Institute of Technology, Atlanta</p>
+<p>Wearable Computing, Design Research, Education Technology</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="12" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/amarjeet.jpg" style="float:left;height:100px;" /><a href="/amarjeet">Amarjeet Singh<br/>(on Leave)</a></strong>
+<p><strong>Assistant Professor (CSE, ECE)</strong></p>
+
+<p>PhD (2009), University of California, Los Angeles, USA</p>
+<p>Mobile Sensing, Approximation Algorithms, Environmental Monitoring, Low Cost Technologies.</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/anand.jpg" style="float:left;height:100px;" /><a href="/anand">Anand Srivastava</a></strong>
+<p><strong>Professor (ECE)</strong></p>
+
+<p>PhD (2003), IIT-Delhi</p>
+<p>OFDM based Optical Core and Access Networks, Long Reach PONs, Optical Wireless Communication Systems, Fi-Wi Architectures, Optical Signal Processing, Green Telecom Networks</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/angshul.jpg" style="float:left;height:100px;" /><a href="/angshul">Angshul Majumdar<br/>(On Sabbatical)</a></strong>
+<p><strong>Associate  Professor (ECE)</strong></p>
+
+<p>PhD (2012), University of British Columbia</p>
+<p>Compressed Sensing, Low-rank matrix recovery, Magnetic Resonance Imaging, Color Imaging</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/anubhag.jpg" style="float:left;height:100px;" /><a href="/anubha">Anubha Gupta</a></strong>
+<p><strong>Professor (ECE)</strong></p>
+
+<p>PhD (2006), IIT-Delhi</p>
+<p>Statistical Signal Processing, Biomedical Signal and Image Processing, Higher education policy and Assessment.</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/anujg.jpg" style="float:left;height:100px;" /><a href="/anujg">Anuj Grover</a></strong>
+<p><strong>Assistant Professor (ECE)</strong></p>
+
+<p>PhD (2015), IIT-Delhi</p>
+<p>Ultra Low Power In-Memory Compute for edge computing and machine learning applications, Safety and security in hardware,Error resilient energy efficient systems.</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="4" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/anuradhas.jpg" style="float:left;height:100px;" /><a href="/anuradha">Anuradha Sharma</a></strong>
+<p><strong>Associate Professor (Math)</strong></p>
+
+<p>PhD (2006), Panjab University, Chandigarh, India</p>
+<p>Algebraic Coding Theory, Number Theory and Algebra.</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/arjunr.jpg" style="float:left;height:100px;" /><a href="/arjun">Arjun Ray</a></strong>
+<p><strong>Assistant Professor (CB)</strong></p>
+
+<p>PhD (2018), CSIR-IGIB</p>
+<p>Deciphering the mechanism of CRISPR-Cas9, Elucidating molecular interactions in the reverse cholesterol pathway, Structural genomic problems</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/arunb.jpg" style="float:left;height:100px;" /><a href="/arunb">Arun Balaji Buduru</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2016),  Arizona State University, USA</p>
+<p>Cyber Security, Reinforcement Learning and IoT</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="4" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/ashishpandey.jpg" style="float:left;height:100px;" /><a href="/ashishk">Ashish Kumar Pandey</a></strong>
+<p><strong>Assistant Professor (Math)</strong></p>
+
+<p>PhD (2018), The University of Illinois at Urbana-Champaign, USA.</p>
+<p>Partial Differential Equations</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/debajyoti.jpg" style="float:left;height:100px;" /><a href="/dbera">Debajyoti Bera</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2009), Boston University, USA</p>
+<p>Quantum Computing, Complexity Theory, Algorithms, Cryptography</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="13" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty//debarka.jpg" style="float:left;height:100px;" /><a href="/debarka">Debarka Sengupta</a></strong>
+<p><strong>Assistant Professor (CB, CSE)</strong></p>
+
+<p>PhD (2014), Jadavpur University</p>
+<p>Computational genomics, Machine Learning</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="4" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/debika.jpg" style="float:left;height:100px;" /><a href="/debika">Debika Banerjee</a></strong>
+<p><strong>Assistant Professor (Math)</strong></p>
+
+<p> PhD (2017), Harish-Chandra Research Institute, Allahabad</p>
+<p>Analytic and Probabilistic Number Theory</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="14" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/donghoon.jpg" style="float:left;height:100px;" /><a href="/donghoon">Donghoon Chang<br/>(On Sabbatical)</a></strong>
+<p><strong>Associate Professor (CSE, Math)</strong></p>
+
+<p>PhD (2008), Korea University, Korea</p>
+<p>Cryptography, Cryptanalysis, Cyber Security, Information Theory</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/raghava.jpg" style="float:left;height:100px;" /><a href="/raghava">G.P.S. Raghava</a></strong>
+<p><strong>Head, Professor (CB)</strong></p>
+
+<p>PhD (1996), Institute of Microbial Technology, Chandigarh. </p>
+<p>Development of open source resources, Application of machine learning techniques, Genome based-techniques</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/gbagler.jpg" style="float:left;height:100px;" /><a href="/bagler">Ganesh Bagler</a></strong>
+<p><strong>Associate  Professor (CB)</strong></p>
+
+<p>PhD (2007), CSIR-Centre for Cellular and Molecular Biology</p>
+<p>Complex Systems, Computational and Systems Biology, Complex Networks, Bioinformatics</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/gauravahuja.jpg" style="float:left;height:100px;" /><a href="/gauravahuja">Gaurav Ahuja</a></strong>
+<p><strong>Assistant Professor (CB)</strong></p>
+
+<p>PhD (2015), University of Cologne, Germany</p>
+<p>Identification, deorphanization and characterization of ectopically expressed GPCRS</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/gaurava.jpg" style="float:left;height:100px;" /><a href="/gaurava">Gaurav Arora</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2017), Iowa State University</p>
+<p>Natural Resource & Agricultural Economics, Ecological Economics, Applied Econometrics, Industrial Organization, Applied Game Theory, Spatial Analyses, Remote Sensing</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/gayatri.jpg" style="float:left;height:100px;" /><a href="/gayatri">Gayatri Nair</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2016), Jawaharlal Nehru University, New Delhi</p>
+<p>Urban informal labour and livelihood patterns with an emphasis on the question of technology, caste and gender</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/gourabg.jpg" style="float:left;height:100px;" /><a href="/gourabg">Gourab Ghatak</a></strong>
+<p><strong>Assistant Professor (ECE)</strong></p>
+
+<p>PhD (2019), Wireless Communications, CEA-LETI and Telecom ParisTech, France</p>
+<p>Stochastic geometry, millimeter-wave communications, 5G network planning, and signal processing for 5G waveforms</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="6" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/grace.jpg" style="float:left;height:100px;" /><a href="/grace">Grace Eden</a></strong>
+<p><strong>Assistant Professor (HCD)</strong></p>
+
+<p>DPhil (2012), University of Oxford</p>
+<p>Human-Centred Robotics and Artificial Intelligence, Design Methodology, and Participatory Innovation of Emerging Technologies</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="16" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/Jainendra.jpg" style="float:left;height:100px;" /><a href="/jainendra">Jainendra Shukla</a></strong>
+<p><strong>Assistant Professor (CSE, HCD)</strong></p>
+
+<p>PhD (2018), Universitat Rovira i Virgili (URV), Spain</p>
+<p>Human-Robot Interaction, Affective Computing and Machine Learning</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="4" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/kaushik.jpg" style="float:left;height:100px;" /><a href="/kaushik">Kaushik Kalyanaraman</a></strong>
+<p><strong>Assistant Professor (Math)</strong></p>
+
+<p>PhD (2015), University of Illinois at Urbana-Champaign</p>
+<p>Applied and Computational Analysis, Geometry and Topology</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/kanjilal.jpg" style="float:left;height:100px;" /><a href="/kanjilal">Kiriti Kanjilal</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2018), Washington State University</p>
+<p>Microeconomics, game theory, industrial organization, environmental economics and behavioral economics</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/koteswar.jpg" style="float:left;height:100px;" /><a href="/koteswar">Koteswar Rao Jerripothula</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2017), Nanyang Technological University, Singapore</p>
+<p>Joint image/video processing and applied AI</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/Manohar-Kumar.jpg" style="float:left;height:100px;" /><a href="/manohark">Manohar Kumar</a></strong>
+<p><strong>Head, Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2013), LUISS University, Rome</p>
+<p>Ethics of digital dissent, digital citizenship, whistle blowing, civil disobedience, secrecy, and epistemic injustice.</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/shad.jpg" style="float:left;height:100px;" /><a href="/shad">Md. Shad Akhtar</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2019), IIT Patna</p>
+<p>Sentiment and Emotion Analysis in the Natural Language Processing domain, Dialog Management and Multimodal Analysis.</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/mshashmi.jpg" style="float:left;height:100px;" /><a href="/mshashmi">Mohammad S. Hashmi <br/>(on Leave)</a></strong>
+<p><strong>Associate Professor (ECE)</strong></p>
+
+<p>PhD (2009), Cardiff University, UK</p>
+<p>RF Measurements, PA Design and Linearization, RF Systems, Software Defined Radio</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="4" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/monika.jpg" style="float:left;height:100px;" /><a href="/monika">Monika Arora</a></strong>
+<p><strong>Assistant Professor (Math)</strong></p>
+
+<p>PhD (2018), Old Dominion University, Virginia, USA</p>
+<p>Count data and statistical modeling</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/mrinmoy.jpg" style="float:left;height:100px;" /><a href="/mrinmoy">Mrinmoy Chakrabarty</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2017), Osaka University, Japan</p>
+<p>Affective Cognitive Neuroscience, Visual-Spatial Cognition, Autism Spectrum Disorders, Learning-Memory</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/mukesh.jpg" style="float:left;height:100px;" /><a href="/mukesh">Mukesh Mohania</a></strong>
+<p><strong>Professor (CSE)</strong></p>
+
+<p>PhD (1995), Indian Institute of Technology - Bombay, India</p>
+<p>Information integration, Master data management, AI based entity analytics, big data analytics and applications, and blockchain data management</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/mukulikam.jpg" style="float:left;height:100px;" /><a href="/mukulika">Mukulika Maity</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2016), IIT-Bombay</p>
+<p>wireless networks and mobile computing</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/nishad.jpg" style="float:left;height:100px;" /><a href="/nishad">Nishad Patnaik</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2013), NSSR, New York, USA</p>
+<p>Kantian transcendental Idealism, Husserlian phenomenology, Social and Political Philosophy</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/ojaswa.jpg" style="float:left;height:100px;" /><a href="/ojaswa">Ojaswa Sharma<br/>(on Leave)</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2010), Technical University of Denmark, Denmark</p>
+<p>Computer graphics, volume rendering, 3D reconstruction</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/jalote.jpg" style="float:left;height:100px;" /><a href="/jalote">Pankaj Jalote <br/>(On Sabbatical)</a></strong>
+<p><strong>Distinguished Professor (CSE)</strong></p>
+
+<p>PhD (1985), University of Illinois at Urbana Champaign, USA</p>
+<p>Software Engineering, Fault Tolerance, Distributed Systems. </p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/paro.jpg" style="float:left;height:100px;" /><a href="/paro">Paro Mishra</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2017), IIT Delhi</p>
+<p>Demographic Anthropology, Family and Kinship, Transnationalism, Gender and Technology and Media Representation</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/piyuskedia.jpg" style="float:left;height:100px;" /><a href="/piyus">Piyus Kedia</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2018), IIT-Delhi</p>
+<p>System security, safe languages, virtualization and dynamic/static techniques to build systems</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/pk.jpg" style="float:left;height:100px;" /><a href="/pk">Ponnurangam Kumaraguru</a></strong>
+<p><strong>Professor (CSE)</strong></p>
+
+<p>PhD (2009), Carnegie Mellon University, USA</p>
+<p>Cyber Crime, Cyber/Information Security, Privacy, Human Computer Interaction</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/praveen.jpg" style="float:left;height:100px;" /><a href="/praveen">Praveen Priyadarshi</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2018), London School of Economics and Political Science, London</p>
+<p>Distinctiveness of everyday political practices in new urban spaces</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/pravesh.jpg" style="float:left;height:100px;" /><a href="/praveshb">Pravesh Biyani</a></strong>
+<p><strong>Associate Professor (ECE)</strong></p>
+
+<p>PhD (2012), IIT- Delhi</p>
+<p>Optimization for signal processing & communications</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="16" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/puspendra.jpg" style="float:left;height:100px;" /><a href="/pushpendra">Pushpendra Singh</a></strong>
+<p><strong>Professor (CSE, HCD)</strong></p>
+
+<p>PhD (2004), Inria-Rennes, University de Rennes 1, France</p>
+<p>Mobile Systems and Applications, Middleware, ICT for Development</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="16" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/rahulm.jpg" style="float:left;height:100px;" /><a href="/rahulm">Rahul Mohanani</a></strong>
+<p><strong>Assistant Professor (CSE, HCD)</strong></p>
+
+<p>PhD (2019), University of Oulu, Finland</p>
+<p>Human aspects of Software Engineering, Intertemporal Preferences in Technical Debt</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/purandare.jpg" style="float:left;height:100px;" /><a href="/purandare">Rahul Purandare</a></strong>
+<p><strong>Associate Professor (CSE)</strong></p>
+
+<p>PhD (2011), University of Nebraska - Lincoln, USA</p>
+<p>Software Engineering, Program Analysis, Runtime Verification, Specification Mining, Automatic Program Repair</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="14" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/rajiv.jpg" style="float:left;height:100px;" /><a href="/rajiv">Rajiv Raman</a></strong>
+<p><strong>Head (Math), Associate Professor (CSE, Math)</strong></p>
+
+<p>PhD (2007), University of Iowa, USA</p>
+<p>Algorithms, Graphs, Combinatorial Optimization</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="16" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/ratn.jpg" style="float:left;height:100px;" /><a href="/rajivratn">Rajiv Ratn Shah</a></strong>
+<p><strong>Assistant Professor (CSE, HCD)</strong></p>
+
+<p>PhD (2017),  National University of Singapore, Singapore</p>
+<p>Multimedia, Natural Language Processing, Computer Vision, Machine Learning</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/rakeshc.jpg" style="float:left;height:100px;" /><a href="/rakesh">Rakesh Chaturvedi</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2015), Pennsylvania State University</p>
+<p>Communication and Cooperation in Games, Political Economy and Market Design</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/bose.jpg" style="float:left;height:100px;" /><a href="/bose">Ranjan Bose</a></strong>
+<p><strong>Director and Professor (ECE)</strong></p>
+
+<p>PhD (1995), University of Pennsylvania, Philadelphia, USA</p>
+<p>Secure communications, coding theory, 5G security, wireless security, physical layer security and broadband wireless access.</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/ranjitha.jpg" style="float:left;height:100px;" /><a href="/ranjitha">Ranjitha Prasad</a></strong>
+<p><strong>Assistant Professor (ECE)</strong></p>
+
+<p>PhD (2015), Indian Institute of Science, Banglore</p>
+<p>Causal Inference, Survival analysis, and sparsity in Bayesian neural networks</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="12" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/saket.jpg" style="float:left;height:100px;" /><a href="/anands">Saket Anand</a></strong>
+<p><strong>Assistant Professor (CSE, ECE)</strong></p>
+
+<p>PhD (2013), Rutgers University, NJ, USA</p>
+<p>Computer Vision, Image and Scene Understanding, Robust Statistical Methods, Pattern Recognition, Machine Learning</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sambuddho.jpg" style="float:left;height:100px;" /><a href="/sambuddho">Sambuddho Chakravarty</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2014), Columbia University, USA</p>
+<p>Network Anonymity and Privacy, Network Surveillance and Anti-Censorship and Network and Distributed Systems Security</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="4" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/samrithram.jpg" style="float:left;height:100px;" /><a href="/samrithram">Samrith Ram</a></strong>
+<p><strong>Assistant Professor (Math)</strong></p>
+
+<p>PhD (2012), IIT Bombay</p>
+<p>Finite Fields and Combinatorics</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sanatk.jpg" style="float:left;height:100px;" /><a href="/sanat">Sanat K Biswas</a></strong>
+<p><strong>Assistant Professor (ECE)</strong></p>
+
+<p>PhD (2017), University of New South Wales</p>
+<p>Space vehicle guidance, navigation and control, orbit determination, GNSS-based navigation, non-linear dynamics and estimation algorithms</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sanjit.jpg" style="float:left;height:100px;" /><a href="/skkaul">Sanjit Krishnan Kaul</a></strong>
+<p><strong>Associate Professor (ECE)</strong></p>
+
+<p>PhD (2011), Rutgers University, USA</p>
+<p>Age-of-Information, Networking for Cyber Physical Systems, Networks of Autonomous Vehicles, and Autonomous Driving</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="4" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sankhasbasu.jpg" style="float:left;height:100px;" /><a href="/sankha">Sankha S Basu</a></strong>
+<p><strong>Assistant Professor(Math)</strong></p>
+
+<p>PhD (2013), The Pennsylvania State University</p>
+<p>Mathematical Logic - intuitionistic logic and paraconsistent logics</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="4" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sarthoks.jpg" style="float:left;height:100px;" /><a href="/sarthok">Sarthok Sircar</a></strong>
+<p><strong>Assistant Professor (Math)</strong></p>
+
+<p>PhD (2009),  University of South Carolina.</p>
+<p>Multiscale models and robust numerical algorithms for complex systems</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sayakbhatt.jpg" style="float:left;height:100px;" /><a href="/sayak">Sayak Bhattacharya</a></strong>
+<p><strong>Assistant Professor (ECE)</strong></p>
+
+<p>PhD (2016), IIT Delhi </p>
+<p>Ultra-thin and high-efficiency photovoltaics, Strong light-matter interaction in photonic crystals</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sayan.jpg" style="float:left;height:100px;" /><a href="/sayan">Sayan Basu Roy</a></strong>
+<p><strong>Assistant Professor (ECE)</strong></p>
+
+<p>PhD (2019), IIT-Delhi</p>
+<p>Adaptive control for uncertain switched systems, online approximate optimal control using reinforcement learning based solutions, adaptive backstepping control</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="4" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/shilpak.jpg" style="float:left;height:100px;" /><a href="/shilpak">Shilpak Banerjee</a></strong>
+<p><strong>Assistant Professor (Math)</strong></p>
+
+<p>PhD (2017), Pennsylvania State University</p>
+<p>Dynamical systems and ergodic theory</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/shireen.jpg" style="float:left;height:100px;" /><a href="/shireen">Shireen Mirza</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2011), SOAS University of London, London</p>
+<p>Waste, Anthropocene; Climate Change; Sociology of Risk, Science, Technology & Society; Stigma and Contamination; Labour and Ritual Practices</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/shobha.jpg" style="float:left;height:100px;" /><a href="/shobha">Shobha Sundar Ram</a></strong>
+<p><strong>Head, Associate Professor (ECE)</strong></p>
+
+<p>PhD (2009),  University of Texas at Austin</p>
+<p>Radar \ Antennas</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/smriti.jpg" style="float:left;height:100px;" /><a href="/smriti">Smriti Singh</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2017), Jawaharlal Nehru University, New Delhi</p>
+<p>Social Media, IT and Urban Middle Class, Virtual Community and Solidarity, Privacy, Surveillance and IT</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sneh.jpg" style="float:left;height:100px;" /><a href="/sneh">Sneh Saurabh</a></strong>
+<p><strong>Associate  Professor (ECE)</strong></p>
+
+<p>PhD (2012), IIT-Delhi</p>
+<p>Nanoelectronics, Exploratory Electronic Devices, Energy-Efficient Systems, VLSI Design and Verification and CAD for VLSI.</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="4" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sneha.jpg" style="float:left;height:100px;" /><a href="/sneha">Sneha Chaubey</a></strong>
+<p><strong>Assistant Professor (Math)</strong></p>
+
+<p>PhD (2018), University of Illinois at Urbana-Champaign (UIUC)</p>
+<p>Number theory, in particular analytic number theory, L-functions, distribution of sequences modulo one 
+</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sonia.jpg" style="float:left;height:100px;" /><a href="/sonia">Sonia Baloni Ray</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2012), Georg August University, Goettingen, Germany</p>
+<p>Role of attention in visual processing, studying mechanisms of emotion and motion perception</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/souvik.jpg" style="float:left;height:100px;" /><a href="/souvik">Souvik Dutta</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2014), Pennsylvania State University </p>
+<p>Political economy, microfinance and economics of digital marketing</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sriram.jpg" style="float:left;height:100px;" /><a href="/sriram">Sriram K</a></strong>
+<p><strong>Associate Professor (CB)</strong></p>
+
+<p>PhD (2004),  IIT- Madras</p>
+<p>Systems biology, Cell division cycle, Circadian rhythms, Computational cognitive neuroscience</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/subhabrata.jpg" style="float:left;height:100px;" /><a href="/subhabrata">Subhabrata Samajder</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2017) Indian Statistical Institute, Kolkata</p>
+<p>Symmetric-key Cryptanalysis, lattice-based cryptography, blockchains and random graphs</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sujay.jpg" style="float:left;height:100px;" /><a href="/sdeb">Sujay Deb</a></strong>
+<p><strong>Associate Professor (ECE)</strong></p>
+
+<p>PhD (2012), Washington State University</p>
+<p>Multi-core processor architectures, Wireless network on-chip, Emerging interconnection technologies for multi-core chips</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/sumit.jpg" style="float:left;height:100px;" /><a href="/sumit">Sumit J Darak</a></strong>
+<p><strong>Assistant Professor (ECE)</strong></p>
+
+<p>PhD (2013), Nanyang Technological University (NTU), Singapore</p>
+<p>Intelligent, Reconfigurable and Self-sustainable wireless radio, Machine learning for wireless networks, Algorithms to architectures</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/syamantak.jpg" style="float:left;height:100px;" /><a href="/syamantak">Syamantak Das</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2015), IIT-Delhi</p>
+<p>Theoretical computer science and discrete optimization</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/tanmoy.jpg" style="float:left;height:100px;" /><a href="/tanmoy">Tanmoy Chakraborty</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2015), IIT Kharagpur</p>
+<p>Network Science, Data Mining and Data-driven Cybersecurity, Natural Language Processing</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/dr-tavpritesh.jpg" style="float:left;height:100px;" /><a href="/tavpritesh">Tavpritesh Sethi</a></strong>
+<p><strong>Assistant Professor (CB)</strong></p>
+
+<p>PhD (2014), CSIR-IGIB,</p>
+<p>Biomedical Informatics, AI in Healthcare,  Systems and Networks Medicine</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/raghavam.jpg" style="float:left;height:100px;" /><a href="/raghavam">V. Raghava Mutharaju</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2016), Wright State University, Dayton, OH, USA</p>
+<p>Knowledge Graphs/Semantic Web, Ontology modeling and reasoning, Linked Data, Big Data</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="5" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/ratna-suri.jpg" style="float:left;height:100px;" /><a href="/ratan">Venkata Ratnadeep Suri</a></strong>
+<p><strong>Assistant Professor (SSH)</strong></p>
+
+<p>PhD (2013), Indiana University, Bloomington, Indiana</p>
+<p>ICTs and Society, Information Literacy, Data Literacy, E-Health, M-health, Social media for Health</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/vibhork.jpg" style="float:left;height:100px;" /><a href="/vibhork">Vibhor Kumar</a></strong>
+<p><strong>Assistant Professor (CB)</strong></p>
+
+<p>PhD (2007), Helsinki University of Technology (now Aalto), Finland</p>
+<p>Genomics, statistical signal processing, structural biology</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/vikram.jpg" style="float:left;height:100px;" /><a href="/vikram">Vikram Goyal</a></strong>
+<p><strong>Head, Associate Professor (CSE)</strong></p>
+
+<p>PhD (2009),  IIT- Delhi</p>
+<p>Databases, Data Privacy and Security</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/vivek.jpg" style="float:left;height:100px;" /><a href="/vivek">Vivek Bohara</a></strong>
+<p><strong>Associate Professor (ECE)</strong></p>
+
+<p>PhD (2011),  Nanyang Technological University, Singapore</p>
+<p>Device-to-device communication, Visible Light Communication, Hybrid VLC-RF architecture, Proof-of-concept testbeds and experimental validation</p>
+</div>
+
+
+
+<div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+<strong><img alt="" src="../sites/default/files/images/faculty/vivekk.jpg" style="float:left;height:100px;" /><a href="/vivekk">Vivek Kumar</a></strong>
+<p><strong>Assistant Professor (CSE)</strong></p>
+
+<p>PhD (2014), Research School of Computer Science, Australian National University</p>
+<p>Parallel programming models and runtime systems</p>
+</div>
+
+
+
+<hr width="100%" align="left" style="margin-bottom:0; border:none;"/>
+<h3>Visiting Faculty</h3>
+<hr width="100%" align="left" style="margin-bottom:0; border:none;"/>
+
+<div class="card rteleft facultycard" dept="2" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/abhijit.jpg" style="float:left;height:110px;" /><a href="http://faculty.iiitd.ac.in/~abhijit/">Abhijit Mitra</a></strong><br/>
+<strong>abhijit@iiitd.ac.in<br/>(DST Inspire Faculty)</strong></p>
+<p>PhD (2017), under joint Indo-UK collaboration between IIT Delhi and British Telecom (BT), UK in the area of Elastic Optical Networks.</p>
+<p>Elastic Optical Networks, Passive Optical Networks and integrated wireless infrastructure, Quantum Key Distribution</p>
+</div>
+
+<div class="card rteleft facultycard" dept="3" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/swapnapurandare.jpg" style="float:left;height:110px;" /><a href="https://swapna2708.wixsite.com/website" target="_blank">Swapna Purandare</a></strong><br/>
+<strong>swapna@iiitd.ac.in<br/>(Ramanujan Fellow SERB-DST)</strong></p>
+<p>PhD (2014), University of Nebraska-Lincoln, USA</p>
+<p>Evolutionary Ecology, Biodiversity Conservation, Bioinformatics, NGS, eDNA, Metagenomics </p>
+</div>
+
+<div class="card rteleft facultycard" dept="4" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/acushla.jpg" style="float:left;height:110px;" />Acushla Saraswat</strong><br/>
+<strong>acushla@iiitd.ac.in<br/>(Lecturer-Math)</strong></p>
+<p>PhD (2018), University of Mumbai</p>
+<p>Differential Geometry, with an emphasis  on the study of the Laplacian</p>
+</div>
+
+<div class="card rteleft facultycard" dept="5" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/amrit-vf.jpg" style="float:left;height:110px;" />Amrit Srinivasan</strong><br/>
+<strong>amrit@iiitd.ac.in<br/></strong></p>
+<p>PhD, University of Cambridge, UK</p>
+<p>The comparative study of knowledge and culture; violence, civil society and the state; sustainability and lifestyle change; women's work, family and the professions; Information Technology and the Indian service economy.</p>
+</div>
+
+<div class="card rteleft facultycard" dept="6" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/anoopr.jpg" style="float:left;height:110px;" />Anoop Ratn</strong><br/>
+<strong>anoopratn@iiitd.ac.in<br/></strong></p>
+<p>BFA, Mahatma Gandhi Kashi Vidhyapeeth, Varanasi.</p>
+<p>Animation Film Making, Gaming, Concept Arts</p>
+</div>
+
+<div class="card rteleft facultycard" dept="1" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/bnjain.jpg" style="float:left;height:110px;" />Bijendra Nath Jain</strong><br/>
+<strong>bnjain@iiitd.ac.in<br/>(Visiting Distinguished Professor)</strong></p>
+<p>PhD (1975) SUNY, Stony Brook (NY)</p>
+<p>Computer Networks and Systems, including Wireless Networks, Ad hoc and Sensor Networks and in Information Security</p>
+</div>
+
+<div class="card rteleft facultycard" dept="4" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/visiting/dr-brijesh.jpg" style="float:left;height:110px;" />Brijesh Eshpuniyani</strong><br/>
+<strong>beshpuniyani@iiitd.ac.in<br/></strong></p>
+<p>PhD (2003), Purdue University</p>
+<p>Fluid Mechanics, Transition & Turbulence.</p>
+</div>
+
+<div class="card rteleft facultycard" dept="1" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/anantaram.jpg" style="float:left;height:110px;" />C. Anantaram</strong><br/>
+<strong>c.anantaram@iiitd.ac.in<br/></strong></p>
+<p>PhD, IIT Bombay, Mumbai.</p>
+<p>Knowledge systems, Natural language processing for business applications, Artificial development, and Formal concept analysis</p>
+</div>
+
+<div class="card rteleft facultycard" dept="2" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/vishweswaran.jpg" style="float:left;height:110px;" />G.S. Visweswaran</strong><br/>
+<strong>viswes@iiitd.ac.in<br/></strong></p>
+<p>Retired Professor from IIT-Delhi</p>
+<p>CAD of VLSI, Design of Digital, Analog and Mixed Signal VLSI Circuits</p>
+</div>
+
+<div class="card rteleft facultycard" dept="6" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/indranide.jpg" style="float:left;height:110px;" />Indrani De Parker</strong><br/>
+<strong>indrani@iiitd.ac.in<br/></strong></p>
+<p>PhD (per.), IIT- Mumbai</p>
+<p>Indrani De Parker is an alumnus of the National Institute of Design (NID), Ahmedabad. She is a communication designer and design educator.</p>
+</div>
+
+<div class="card rteleft facultycard" dept="56" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/manohar.jpg" style="float:left;height:110px;" />Manohar Khushalani</strong><br/>
+<strong>manohar@iiitd.ac.in<br/></strong></p>
+<p>Bacherlor in Civil Engineering from BITS Pilani
+Courses on 3D Modelling and Finite Element analysis from IIT, Delhi</p>
+<p>Former Director, Environment and Sociology, at the National Water Academy, Khadakwasla, & Member Secretary, National Environmental Monitoring Committee for River Valley Projects
+
+</p>
+</div>
+
+<div class="card rteleft facultycard" dept="1" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/naveenp.jpg" style="float:left;height:110px;" />Naveen Prakash</strong><br/>
+<strong>naveen@iiitd.ac.in<br/></strong></p>
+<p>PhD (1980) IIT Delhi</p>
+<p>Data Warehouse Requirements Engineering, Information Systems for the Internet of Things, and Business Rules for Requirements Specification</p>
+</div>
+
+<div class="card rteleft facultycard" dept="5" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/pankajvajpayee.jpg" style="float:left;height:110px;" />Pankaj Vajpayee</strong><br/>
+<strong>pvajpayee@iiitd.ac.in<br/></strong></p>
+<p>President Value Research India (P) Ltd.
+MBA (Finance) - University of Delhi; 1993
+B.Tech - IIT Delhi - 1990
+</p>
+<p>Has over 24 years of corporate experience primarily in the field of investment banking and portfolio investment advisory activities.</p>
+</div>
+
+<div class="card rteleft facultycard" dept="5" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/payel.jpg" style="float:left;height:110px;" />Payel C Mukherjee</strong><br/>
+<strong>payel@iiitd.ac.in<br/>(Lecturer - SSH)</strong></p>
+<p>PhD (2016), IIT Gandhinagar</p>
+<p>Theories of Cosmopolitanism, Home, and History of Ideas in South Asian Studies</p>
+</div>
+
+<div class="card rteleft facultycard" dept="1" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/prabhaker.jpg" style="float:left;height:110px;" />Prabhaker Mateti</strong><br/>
+<strong>pmateti@iiitd.ac.in<br/></strong></p>
+<p>PhD (1976), University of Illinois at Urbana-Champaign</p>
+<p>Computer security, Secure software development, Reverse engineering the architecture and design from source code, Automated drawings/ visualizations, and Hardening of operating systems.</p>
+</div>
+
+<div class="card rteleft facultycard" dept="4" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/samaresh.jpg" style="float:left;height:110px;" />Samaresh Chatterji</strong><br/>
+<strong>samaresh@iiitd.ac.in<br/></strong></p>
+<p>PhD (1979), Wayne State University, Detroit</p>
+<p>Former Dean - Academic Programs, DA-IICT, Gandhinagar
+Abstract Algebra, Graph Theory
+[Since Jan 2013]</p>
+</div>
+
+<div class="card rteleft facultycard" dept="5" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/shweta.jpg" style="float:left;height:110px;" />Shweta Singh</strong><br/>
+<strong>shweta.singh@iiitd.ac.in<br/>(Lecturer-SSH)</strong></p>
+<p></p>
+<p>Theories of reasons in moral decision making, Interplay of moral particularism in Buddhist Ethics, and philosophy of critical thinking</p>
+</div>
+
+<div class="card rteleft facultycard" dept="2" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/sudhanshu.jpg" style="float:left;height:110px;" />Sudhanshu Shekhar Jamuar</strong><br/>
+<strong>sudhanshu@iiitd.ac.in<br/></strong></p>
+<p>PhD (1977), Indian Institute of Technology, Kanpur, India</p>
+<p>Analog and Digital Circuit Design, Instrumentation Systems, Communication Systems.</p>
+</div>
+
+<div class="card rteleft facultycard" dept="2" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/sumitm.jpg" style="float:left;height:110px;" />Sumit Mediratta</strong><br/>
+<strong>sumit.mediratta@iiitd.ac.in<br/></strong></p>
+<p>PhD, University of Southern California (USC), Los Angeles</p>
+<p>Efficient Computing Systems, Real-time Computer Vision, Biomedical Engineering </p>
+</div>
+
+<div class="card rteleft facultycard" dept="5" type="visiting">
+<p><strong><img alt="" src="../sites/default/files/images/faculty/swatim.jpg" style="float:left;height:110px;" />Swati Mantri</strong><br/>
+<strong>swati.mantri@iiitd.ac.in<br/>(Lecturer-SSH)</strong></p>
+<p>PhD (2019), IIT-Delhi</p>
+<p>Identity Studies, Urban Sociology, Migration Studies, Visual Anthropology, Media and Society, Sociology of Space and Food</p>
+</div>
+
+</div>
+
+</div></div></div>  </div>
+
+      <footer>
+          </footer>
+  
+    </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+                     <!-- /.region -->
+		   <!-- line added by ankit -->
+        </div>
+      </section> <!-- /#main -->
+    </div>
+	 <!-- line added by ankit -->
+<!--<footer id="footer-bottom">
+    <div id="footer-area" class="clearfix">
+              <div id="footer-block-wrap" class="clearfix in3">
+          <div class="footer-block">
+            <div class="region region-footer-first">
+  <div id="block-block-1" class="block block-block">
+
+        <h2>Latest Events</h2>
+    
+  <div class="content">
+    <p>Research Showcase and Open House, March 11-12, 2016</p>
+<p>Workshop on Smarter and Digital Delhi, 2016</p>
+<p>4th Security & Privacy Symposium, Feb 12-13, 2016</p>
+<p>Inauguration of IRISYS-IIITD R&D Lab, 2016</p>
+  </div>
+  
+</div> --> <!-- /.block -->
+<!--</div> -->
+ <!-- /.region -->
+         <!-- </div>          <div class="footer-block">
+            <div class="region region-footer-second">
+  <div id="block-block-2" class="block block-block">
+
+        <h2>Important Links</h2>
+    
+  <div class="content">
+    <p>Phase 2 Construction in IIIT-Delhi</p>
+<p>Tenure Track Faculty Position</p>
+<p>Courses & Timetable</p>
+<p>PhD Admissions 2016</p>
+<p>M.Tech. Admissions 2016</p>
+  </div>
+  
+</div> --> <!-- /.block -->
+<!--</div> -->
+ <!-- /.region -->
+          <!--</div>          <div class="footer-block">
+            <div class="region region-footer-third">
+  <div id="block-block-3" class="block block-block">
+
+        <h2>Latest News</h2>
+    
+  <div class="content">
+    <p>New Collection of Computing Books by India-based Authors (CBIA)</p>
+<p>Dr. Mayank Vatsa is elected as the Vice President (Publications) in the IEEE Biometrics Council</p>
+<p>Public lecture by well known journalist Mr. Rajdeep Sardesai</p> -->
+  <!--</div>
+  
+</div> --> <!-- /.block -->
+<!--</div> -->
+ <!-- /.region -->
+          <!--</div>        </div>
+            
+          </div>
+
+  </footer> -->
+   <!-- line added by ankit -->
+      </div>
+
+  <footer id="footer-bottom">
+    <div id="footer-area" class="clearfix">
+            
+          </div>
+<!------------------ chaged by ANKIT -------------------------------->
+<!--  edited href's -->
+<!-- Color and Style Correction -->
+ 
+    
+    <div id="bottom" class="clearfix">
+
+      <div class="copyright" style="color:#FFFFFF;">Copyright &copy; 2020. <a href="/">IIIT-Delhi</a>
+  	  </div>
+	  
+      <div class="credit">   <!--<a href="/sitemap">Sitemap</a>&nbsp;| --><a href="/tenders">Tenders</a> | <a href="/rti">RTI</a>&nbsp;|&nbsp;<a href="mailto:admin-web@iiitd.ac.in">Web Admin</a><!--&nbsp;|&nbsp;<a href="/a-z">A-Z index</a> --></div>
+    </div>
+    <input type="hidden" id="navbaroff" value="">
+  </footer>
+<script src="/sites/all/themes/impact_theme/js/script.js"></script></div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-21292205-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+  <script type="text/javascript" src="https://www.iiitd.ac.in/modules/statistics/statistics.js?pr8i0b"></script>
+</body>
+</html>
